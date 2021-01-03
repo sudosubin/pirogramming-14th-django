@@ -9,6 +9,7 @@ django = "*"
 [dev-packages]
 flake8 = "*"
 flake8-django = "*"
+bpython = "*"
 
 [requires]
 python_version = "3.9"
