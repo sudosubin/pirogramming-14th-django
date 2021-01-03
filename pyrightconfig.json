@@ -1,0 +1,14 @@
+{
+  "pythonVersion": "3.9",
+  "typeCheckingMode": "off",
+  "exclude": [
+    ".venv"
+  ],
+  "venvPath": "./",
+  "venv": "./.venv/",
+  "executionEnvironments": [
+    {
+      "root": "./server/"
+    }
+  ]
+}
