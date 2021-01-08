@@ -1,8 +1,15 @@
 <h1>{{ article.title }}</h1>
 
-<a href="{% url "diary:article_update" article.pk %}">
-  글 수정하기
-</a>
+<button>
+  <a href="{% url "diary:article_update" article.pk %}">
+    글 수정하기
+  </a>
+</button>
+
+<form action="{% url "diary:article_delete" article.id %}" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="글 삭제하기" />
+</form>
 
 <hr />
 

@@ -60,3 +60,14 @@ def article_update(request: HttpRequest, pk: int):
 
     destination = reverse('diary:article_read', kwargs={'pk': pk})
     return redirect(destination)
+
+
+def article_delete(request: HttpRequest, pk: int):
+    if request.method == 'GET':
+        destination = reverse('diary:article_read', kwargs={'pk': pk})
+        return redirect(destination)
+
+    Article.objects.filter(id=pk).delete()
+
+    destination = reverse('diary:article_list')
+    return redirect(destination)
