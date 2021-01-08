@@ -1,1 +1,7 @@
-<h1>hello world</h1>
+<h1>Diary List</h1>
+
+<ul>
+{% for article in articles %}
+  <li>{{ article.title }}</li>
+{% endfor %}
+</ul>
