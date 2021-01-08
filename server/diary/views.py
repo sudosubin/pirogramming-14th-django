@@ -6,9 +6,9 @@ from diary.models import Article
 
 
 def article_list(request: HttpRequest):
-    queryset = Article.objects.all()
+    articles = Article.objects.all()
     context = {
-        'articles': queryset,
+        'articles': articles,
     }
     return render(request, 'diary/list.html', context)
 
