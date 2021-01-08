@@ -38,3 +38,25 @@ def article_create(request: HttpRequest):
 
     destination = reverse('diary:article_read', kwargs={'pk': pk})
     return redirect(destination)
+
+
+def article_update(request: HttpRequest, pk: int):
+    if request.method == 'GET':
+        try:
+            article = Article.objects.get(id=pk)
+        except Article.DoesNotExist:
+            destination = reverse('diary:article_list')
+            return redirect(destination)
+
+        context = {
+            'article': article,
+        }
+        return render(request, 'diary/update.html', context)
+
+    title = request.POST['title']
+    content = request.POST['content']
+
+    article = Article.objects.filter(id=pk).update(title=title, content=content)
+
+    destination = reverse('diary:article_read', kwargs={'pk': pk})
+    return redirect(destination)
