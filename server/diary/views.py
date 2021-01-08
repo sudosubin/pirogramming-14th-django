@@ -24,3 +24,17 @@ def article_read(request: HttpRequest, pk: int):
         'article': article,
     }
     return render(request, 'diary/read.html', context)
+
+
+def article_create(request: HttpRequest):
+    if request.method == 'GET':
+        return render(request, 'diary/create.html')
+
+    title = request.POST['title']
+    content = request.POST['content']
+
+    article = Article.objects.create(title=title, content=content)
+    pk = article.id
+
+    destination = reverse('diary:article_read', kwargs={'pk': pk})
+    return redirect(destination)
